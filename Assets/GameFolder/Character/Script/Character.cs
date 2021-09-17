@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FloorCollider : MonoBehaviour
+public class Character : MonoBehaviour
 {
-    
+    public int life;
+    public Transform skin;
 
 
     // Start is called before the first frame update
@@ -16,16 +17,15 @@ public class FloorCollider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Die();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void Die()
     {
-        if (collision.CompareTag("Floor"))
+        if (life <= 0)
         {
-            
+            skin.GetComponent<Animator>().Play("Die", -1);
         }
-
-
     }
+
 }

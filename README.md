@@ -1,2 +1,2 @@
 # MiniVania
- jogo 2d com C#
+ Jogo Metroidvania em 2d, feito na unity com C# .

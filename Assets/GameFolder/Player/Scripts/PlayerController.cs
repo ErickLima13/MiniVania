@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
 
     public int comboNum;
     public float comboTime;
+    public float dashTime;
 
     public LayerMask floorLayer;
 
@@ -25,6 +26,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GetComponent<Character>().life <= 0)
+        {
+            this.enabled = false;
+        }
+
+        Dash();
         AttackCombo();
 
         // faz o player pular
@@ -57,7 +64,11 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = vel;
+        if(dashTime > 0.5)
+        {
+            rb.velocity = vel;
+        }
+        
     }
 
 
@@ -83,4 +94,16 @@ public class PlayerController : MonoBehaviour
         }
     }
     
+    public void Dash()
+    {
+        dashTime += Time.deltaTime;
+
+        if (Input.GetButtonDown("Fire2") && dashTime > 1)
+        {
+            dashTime = 0;
+            skin.GetComponent<Animator>().Play("PlayerDash", -1);
+            rb.velocity = Vector2.zero;
+            rb.AddForce(new Vector2( skin.localScale.x * 150, 0));
+        }
+    }
 }

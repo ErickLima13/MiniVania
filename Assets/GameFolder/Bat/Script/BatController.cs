@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BatController : MonoBehaviour
 {
-    public Transform player;
+    public GameObject player;
 
     public float attackTime;
 
@@ -13,6 +13,7 @@ public class BatController : MonoBehaviour
     void Start()
     {
         attackTime = 0;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
@@ -30,10 +31,10 @@ public class BatController : MonoBehaviour
 
     public void Drain()
     {
-        if(Vector2.Distance(transform.position,player.position) > 0.2f)
+        if(Vector2.Distance(transform.position,player.transform.position) > 0.2f)
         {
             attackTime = 0;
-            transform.position = Vector2.MoveTowards(transform.position, player.position, 0.5f * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, 0.5f * Time.deltaTime);
         }
         else
         {

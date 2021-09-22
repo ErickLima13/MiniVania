@@ -10,9 +10,13 @@ public class PlayerController : MonoBehaviour
     public Transform floorCollider;
     public Transform skin;
 
+    [Header("Atributtes")]
     public int comboNum;
     public float comboTime;
     public float dashTime;
+    public float jumpForce;
+    public float dashForce;
+    public float speed;
 
     public LayerMask floorLayer;
 
@@ -40,12 +44,12 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
             skin.GetComponent<Animator>().Play("PlayerJump",-1);
-            rb.AddForce(new Vector2(0, 150));
+            rb.AddForce(new Vector2(0, jumpForce));
 
         }
 
         // faz o player andar pra esquerda e direita
-        vel = new Vector2(Input.GetAxisRaw("Horizontal"), rb.velocity.y);
+        vel = new Vector2(Input.GetAxisRaw("Horizontal") * speed, rb.velocity.y);
 
 
         //controla as animações de andar do player
@@ -66,7 +70,7 @@ public class PlayerController : MonoBehaviour
     {
         if(dashTime > 0.5)
         {
-            rb.velocity = vel;
+            rb.velocity = vel ;
         }
         
     }
@@ -103,7 +107,7 @@ public class PlayerController : MonoBehaviour
             dashTime = 0;
             skin.GetComponent<Animator>().Play("PlayerDash", -1);
             rb.velocity = Vector2.zero;
-            rb.AddForce(new Vector2( skin.localScale.x * 150, 0));
+            rb.AddForce(new Vector2( skin.localScale.x * dashForce, 0));
         }
     }
 }

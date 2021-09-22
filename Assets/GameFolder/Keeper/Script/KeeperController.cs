@@ -37,6 +37,8 @@ public class KeeperController : MonoBehaviour
 
     public void Patrol()
     {
+
+
         if (skin.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("KeeperAttack"))
         {
             return;

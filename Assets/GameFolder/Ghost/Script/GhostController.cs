@@ -8,6 +8,7 @@ public class GhostController : MonoBehaviour
     
 
     public bool goRight;
+    public float speed;
 
 
 
@@ -34,7 +35,7 @@ public class GhostController : MonoBehaviour
             {
                 transform.position = a.position;
             }
-            transform.position = Vector2.MoveTowards(transform.position, b.position, 2f * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, b.position, speed * Time.deltaTime);
         }
         else
         {
@@ -45,7 +46,7 @@ public class GhostController : MonoBehaviour
                 transform.position = b.position;
             }
 
-            transform.position = Vector2.MoveTowards(transform.position, a.position, 2f * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, a.position, speed * Time.deltaTime);
         }
     }
 
@@ -53,7 +54,7 @@ public class GhostController : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            collision.GetComponent<Character>().life--;
+            collision.GetComponent<Character>().PlayerDamage(1);
         }
     }
 

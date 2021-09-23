@@ -7,6 +7,7 @@ public class BatController : MonoBehaviour
     public GameObject player;
 
     public float attackTime;
+    public float speed;
 
 
     // Start is called before the first frame update
@@ -22,7 +23,7 @@ public class BatController : MonoBehaviour
         if (GetComponent<Character>().life <= 0)
         {
             GetComponent<CircleCollider2D>().enabled = false;
-            GetComponent<Rigidbody2D>().gravityScale = 1;
+            GetComponent<Rigidbody2D>().gravityScale = 5;
             this.enabled = false;
         }
 
@@ -31,17 +32,17 @@ public class BatController : MonoBehaviour
 
     public void Drain()
     {
-        if(Vector2.Distance(transform.position,player.transform.position) > 0.2f)
+        if(Vector2.Distance(transform.position,player.GetComponent<CapsuleCollider2D>().bounds.center ) > 0.9f)
         {
             attackTime = 0;
-            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, 0.5f * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, player.GetComponent<CapsuleCollider2D>().bounds.center, speed * Time.deltaTime);
         }
         else
         {
             attackTime = attackTime + Time.deltaTime;
-            if(attackTime >= 1)
+            if(attackTime >= 0.6f)
             {
-                player.GetComponent<Character>().life--;
+                player.GetComponent<Character>().PlayerDamage(1);
                 attackTime = 0;
             }
         }

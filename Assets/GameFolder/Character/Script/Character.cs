@@ -6,6 +6,7 @@ public class Character : MonoBehaviour
 {
     public int life;
     public Transform skin;
+    public Transform cam;
 
 
     // Start is called before the first frame update
@@ -18,6 +19,7 @@ public class Character : MonoBehaviour
     void Update()
     {
         Die();
+        
     }
 
     public void Die()
@@ -27,5 +29,15 @@ public class Character : MonoBehaviour
             skin.GetComponent<Animator>().Play("Die", -1);
         }
     }
+
+    public void PlayerDamage(int value)
+    {
+
+        life -= value;
+        skin.GetComponent<Animator>().Play("PlayerDamage", 1);
+        cam.GetComponent<Animator>().Play("ShakeCamera", -1);
+
+    }
+
 
 }

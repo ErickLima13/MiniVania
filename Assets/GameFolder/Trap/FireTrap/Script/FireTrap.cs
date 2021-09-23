@@ -24,7 +24,7 @@ public class FireTrap : MonoBehaviour
         {
             player = collision.transform;
 
-            player.GetComponent<Character>().life--;
+            player.GetComponent<Character>().PlayerDamage(1);
 
         }
     }

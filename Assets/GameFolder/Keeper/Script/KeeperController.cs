@@ -9,6 +9,7 @@ public class KeeperController : MonoBehaviour
 
     public Transform skin;
     public Transform keeperRange;
+    public float speed;
 
     public bool goRight;
     
@@ -53,7 +54,7 @@ public class KeeperController : MonoBehaviour
             {
                 goRight = false;
             }
-            transform.position = Vector2.MoveTowards(transform.position, b.position, 0.2f * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, b.position, speed * Time.deltaTime);
         }
         else
         {
@@ -64,7 +65,7 @@ public class KeeperController : MonoBehaviour
                 goRight = true;
             }
 
-            transform.position = Vector2.MoveTowards(transform.position, a.position, 0.2f * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, a.position, speed * Time.deltaTime);
         }
     }
 

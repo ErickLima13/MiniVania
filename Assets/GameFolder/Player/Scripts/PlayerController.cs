@@ -32,7 +32,9 @@ public class PlayerController : MonoBehaviour
     {
         if (GetComponent<Character>().life <= 0)
         {
+            rb.simulated = false;
             this.enabled = false;
+
         }
 
         Dash();

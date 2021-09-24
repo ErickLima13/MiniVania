@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpikeTrap : MonoBehaviour
+public class AddHeart : MonoBehaviour
 {
-    Transform player;
-    public float force;
+
 
     // Start is called before the first frame update
     void Start()
@@ -23,13 +22,8 @@ public class SpikeTrap : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            player = collision.transform;
-
-            player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            player.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, force));
-            player.GetComponent<Character>().PlayerDamage(1);
-
+            collision.GetComponent<Character>().life++;
+            Destroy(gameObject);
         }
     }
-
 }

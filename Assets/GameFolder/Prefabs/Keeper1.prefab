@@ -172,6 +172,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 2
   skin: {fileID: 6142107365430994542}
+  cam: {fileID: 0}
+  player: {fileID: 0}
+  heartCounText: {fileID: 0}
 --- !u!1 &6142107365430994543
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,7 +250,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 7928858964255100155, guid: 7d1145f45f2fba64eac13a5a033f206f,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

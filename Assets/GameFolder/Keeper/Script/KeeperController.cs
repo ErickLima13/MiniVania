@@ -7,6 +7,9 @@ public class KeeperController : MonoBehaviour
     public Transform a;
     public Transform b;
 
+    public AudioSource audioSource;
+    public AudioClip[] clips;
+
     public Transform skin;
     public Transform keeperRange;
     public float speed;
@@ -28,6 +31,7 @@ public class KeeperController : MonoBehaviour
 
         if (GetComponent<Character>().life <= 0)
         {
+            audioSource.PlayOneShot(clips[0], 0.5f);
             keeperRange.GetComponent<CircleCollider2D>().enabled = false;
             GetComponent<CapsuleCollider2D>().enabled = false;
             this.enabled = false;

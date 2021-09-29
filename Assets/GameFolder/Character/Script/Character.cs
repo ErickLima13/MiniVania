@@ -24,7 +24,11 @@ public class Character : MonoBehaviour
     {
         Die();
 
-        heartCounText.text = "x" + life.ToString();
+        if (transform.CompareTag("Player"))
+        {
+            heartCounText.text = "x" + life.ToString();
+        }
+        
     }
 
     public void Die()
@@ -41,7 +45,8 @@ public class Character : MonoBehaviour
         life -= value;
         skin.GetComponent<Animator>().Play("PlayerDamage", 1);
         cam.GetComponent<Animator>().Play("ShakeCamera", -1);
-        player.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 300));
+        GetComponent<PlayerController>().audioSource.PlayOneShot(GetComponent<PlayerController>().clips[3], 0.4f);
+        
     }
 
 

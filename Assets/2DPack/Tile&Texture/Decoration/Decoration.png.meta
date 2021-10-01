@@ -71,6 +71,12 @@ TextureImporter:
   - first:
       213: 7686115043111144839
     second: Decoration_22
+  - first:
+      213: 4695875553099044208
+    second: Decoration_23
+  - first:
+      213: 1356666032084300529
+    second: Decoration_24
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -638,7 +644,7 @@ TextureImporter:
         width: 48
         height: 6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -646,6 +652,48 @@ TextureImporter:
       bones: []
       spriteID: 78d0d6fa8e09aaa60800000000000000
       internalID: 7686115043111144839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Decoration_23
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 075d8eb8fe91b2140800000000000000
+      internalID: 4695875553099044208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Decoration_24
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 48
+        width: 3
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f239397198d3d210800000000000000
+      internalID: 1356666032084300529
       vertices: []
       indices: 
       edges: []

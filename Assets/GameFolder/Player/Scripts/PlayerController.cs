@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
 
     public Transform floorCollider;
     public Transform skin;
+    public Transform gameOverScreen;
+    public Transform pauseScreen;
 
     [Header("Atributtes")]
     public int comboNum;
@@ -49,8 +51,10 @@ public class PlayerController : MonoBehaviour
             transform.position = GameObject.Find("Spawn").transform.position;
         }
 
+       
         if (GetComponent<Character>().life <= 0)
         {
+            gameOverScreen.GetComponent<GameOver>().enabled = true;
             rb.simulated = false;
             this.enabled = false;
 
@@ -58,6 +62,7 @@ public class PlayerController : MonoBehaviour
 
         Dash();
         AttackCombo();
+        PauseGame();
 
         // faz o player pular
         bool canJump = Physics2D.OverlapCircle(floorCollider.position, 0.1f, floorLayer);
@@ -71,9 +76,7 @@ public class PlayerController : MonoBehaviour
         }
 
         
-            
-       
-
+  
         // faz o player andar pra esquerda e direita
         vel = new Vector2(Input.GetAxisRaw("Horizontal") * speed, rb.velocity.y);
 
@@ -147,5 +150,18 @@ public class PlayerController : MonoBehaviour
             rb.velocity = Vector2.zero;
             rb.AddForce(new Vector2( skin.localScale.x * dashForce, 0));
         }
+    }
+
+
+    public void PauseGame()
+    {
+        if (Input.GetButtonDown("Cancel"))
+        {
+            pauseScreen.GetComponent<Pause>().enabled = !pauseScreen.GetComponent<Pause>().enabled;
+        }
+    }
+    public void DestroyPlayer()
+    {
+        Destroy(transform.gameObject);
     }
 }

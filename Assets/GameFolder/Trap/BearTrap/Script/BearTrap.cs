@@ -7,13 +7,13 @@ public class BearTrap : MonoBehaviour
     Transform player;
     public Transform skin;
 
-    AudioSource audio;
+    AudioSource audioS;
     public AudioClip clip;
 
     // Start is called before the first frame update
     void Start()
     {
-        audio = GetComponent<AudioSource>();
+        audioS = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -27,7 +27,7 @@ public class BearTrap : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
 
-            audio.PlayOneShot(clip);
+            audioS.PlayOneShot(clip);
 
             player = collision.transform;
 

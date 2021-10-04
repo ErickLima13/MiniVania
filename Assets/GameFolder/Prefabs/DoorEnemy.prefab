@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe3e7b0eb9e794842bc8a866712b7fee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 10
+  life: 5
   skin: {fileID: 7772449099977536779}
   cam: {fileID: 0}
   player: {fileID: 0}

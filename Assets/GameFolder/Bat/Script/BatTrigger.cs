@@ -26,6 +26,7 @@ public class BatTrigger : MonoBehaviour
             foreach(Transform obj in bat)
             {
                 obj.GetComponent<BatController>().enabled = true;
+                
             }
         }
 

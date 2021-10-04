@@ -28,7 +28,7 @@ public class EnemyDoorController : MonoBehaviour
             Destroy(transform.gameObject);
         }
 
-        lifeBar.localScale = new Vector3((1 * GetComponent<Character>().life) / 10f, 1, 1);
+        lifeBar.localScale = new Vector3((2 * GetComponent<Character>().life) / 10f, 1, 1);
         
     }
 }

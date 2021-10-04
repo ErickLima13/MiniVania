@@ -56,6 +56,9 @@ TextureImporter:
   - first:
       213: -4541977737240093436
     second: Skeleton Attack_17
+  - first:
+      213: -6244284412213251510
+    second: Skeleton Attack_18
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -526,6 +529,27 @@ TextureImporter:
       bones: []
       spriteID: 40d521aff47a7f0c0800000000000000
       internalID: -4541977737240093436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skeleton Attack_18
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 16
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4235852968d759a0800000000000000
+      internalID: -6244284412213251510
       vertices: []
       indices: 
       edges: []

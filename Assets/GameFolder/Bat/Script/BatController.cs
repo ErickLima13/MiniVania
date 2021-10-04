@@ -20,13 +20,8 @@ public class BatController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GetComponent<Character>().life <= 0)
-        {
-            GetComponent<CircleCollider2D>().enabled = false;
-            GetComponent<Rigidbody2D>().gravityScale = 5;
-            this.enabled = false;
-        }
 
+        Death();
         Drain();
     }
 
@@ -49,6 +44,15 @@ public class BatController : MonoBehaviour
 
     }
 
+    public void Death()
+    {
+        if (GetComponent<Character>().life <= 0)
+        {
+            GetComponent<CircleCollider2D>().enabled = false;
+            GetComponent<Rigidbody2D>().gravityScale = 5;
+            this.enabled = false;
+        }
+    }
    
 
 }

@@ -45,38 +45,28 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!currentLevel.Equals(SceneManager.GetActiveScene().name))
-        {
-            currentLevel = SceneManager.GetActiveScene().name;
-            transform.position = GameObject.Find("Spawn").transform.position;
-        }
 
-       
-        if (GetComponent<Character>().life <= 0)
-        {
-            gameOverScreen.GetComponent<GameOver>().enabled = true;
-            rb.simulated = false;
-            this.enabled = false;
-
-        }
-
+        Walk();
+        Jump();
+        Death();
         Dash();
         AttackCombo();
         PauseGame();
+        Portal();
 
-        // faz o player pular
-        bool canJump = Physics2D.OverlapCircle(floorCollider.position, 0.1f, floorLayer);
-        if (canJump && Input.GetButtonDown("Jump"))
+    }
+
+    private void FixedUpdate()
+    {
+        if(dashTime > 0.5)
         {
-            audioSource.PlayOneShot(clips[2], 0.5f);
-            rb.velocity = Vector2.zero;
-            skin.GetComponent<Animator>().Play("PlayerJump",-1);
-            rb.AddForce(new Vector2(0, jumpForce));
-
+            rb.velocity = vel ;
         }
-
         
-  
+    }
+
+    public void Walk()
+    {
         // faz o player andar pra esquerda e direita
         vel = new Vector2(Input.GetAxisRaw("Horizontal") * speed, rb.velocity.y);
 
@@ -91,19 +81,21 @@ public class PlayerController : MonoBehaviour
         {
             skin.GetComponent<Animator>().SetBool("PlayerRun", false);
         }
-
-
     }
 
-    private void FixedUpdate()
+    public void Jump()
     {
-        if(dashTime > 0.5)
+        // faz o player pular
+        bool canJump = Physics2D.OverlapCircle(floorCollider.position, 0.1f, floorLayer);
+        if (canJump && Input.GetButtonDown("Jump"))
         {
-            rb.velocity = vel ;
-        }
-        
-    }
+            audioSource.PlayOneShot(clips[2], 0.5f);
+            rb.velocity = Vector2.zero;
+            skin.GetComponent<Animator>().Play("PlayerJump", -1);
+            rb.AddForce(new Vector2(0, jumpForce));
 
+        }
+    }
 
     public void AttackCombo()
     {
@@ -152,6 +144,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void Portal()
+    {
+        if (!currentLevel.Equals(SceneManager.GetActiveScene().name))
+        {
+            currentLevel = SceneManager.GetActiveScene().name;
+            transform.position = GameObject.Find("Spawn").transform.position;
+        }
+    }
+
 
     public void PauseGame()
     {
@@ -163,5 +164,16 @@ public class PlayerController : MonoBehaviour
     public void DestroyPlayer()
     {
         Destroy(transform.gameObject);
+    }
+
+    public void Death()
+    {
+        if (GetComponent<Character>().life <= 0)
+        {
+            gameOverScreen.GetComponent<GameOver>().enabled = true;
+            rb.simulated = false;
+            this.enabled = false;
+
+        }
     }
 }

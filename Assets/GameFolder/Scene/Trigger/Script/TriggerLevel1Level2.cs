@@ -3,15 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class TriggerLevel1Level2 : MonoBehaviour
 {
-    public string currentLevel;
+    public Animator anim;
+    public float transitionDelayTime = 1.0f;
+
     
+    public int index;
+
+    private void Awake()
+    {
+        
+        anim = GameObject.Find("Transition").GetComponent<Animator>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        currentLevel = SceneManager.GetActiveScene().name;
+        
+        
+
     }
 
     // Update is called once per frame
@@ -24,18 +36,17 @@ public class TriggerLevel1Level2 : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if(currentLevel == "Level1")
-            {
-                SceneManager.LoadScene("Level2");
-            }
-
-            if(currentLevel == "Level2")
-            {
-                SceneManager.LoadScene("Level3");
-            }
-
+            SceneManager.LoadScene(index);
+            StartCoroutine(DelayLoadLevel());
 
 
         }
     }
+
+   IEnumerator DelayLoadLevel()
+    {
+        anim.SetTrigger("TriggerTransition");
+        yield return new WaitForSeconds(transitionDelayTime);
+    }
+
 }

@@ -17,18 +17,29 @@ public class EnemyDoorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(lifeChange != GetComponent<Character>().life)
+
+
+        Damage();
+        Broke();
+        
+    }
+
+    public void Damage()
+    {
+        if (lifeChange != GetComponent<Character>().life)
         {
             lifeChange = GetComponent<Character>().life;
-            GetComponent<Character>().skin.GetComponent<Animator>().Play("EnemyDoorDamage",-1);
+            GetComponent<Character>().skin.GetComponent<Animator>().Play("EnemyDoorDamage", -1);
         }
+    }
 
+    public void Broke()
+    {
         if(GetComponent<Character>().life <= 0)
         {
             Destroy(transform.gameObject);
         }
 
         lifeBar.localScale = new Vector3((2 * GetComponent<Character>().life) / 10f, 1, 1);
-        
     }
 }

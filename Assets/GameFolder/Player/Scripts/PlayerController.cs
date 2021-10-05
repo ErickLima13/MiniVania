@@ -45,10 +45,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Death();
         Walk();
         Jump();
-        Death();
         Dash();
         AttackCombo();
         PauseGame();
@@ -140,7 +139,9 @@ public class PlayerController : MonoBehaviour
             dashTime = 0;
             skin.GetComponent<Animator>().Play("PlayerDash", -1);
             rb.velocity = Vector2.zero;
+            rb.gravityScale = 0;
             rb.AddForce(new Vector2( skin.localScale.x * dashForce, 0));
+            Invoke("RestoreGravityScale", 0.5f);
         }
     }
 
@@ -173,7 +174,11 @@ public class PlayerController : MonoBehaviour
             gameOverScreen.GetComponent<GameOver>().enabled = true;
             rb.simulated = false;
             this.enabled = false;
-
         }
+    }
+
+    void RestoreGravityScale()
+    {
+        rb.gravityScale = 6;
     }
 }

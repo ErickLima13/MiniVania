@@ -38,7 +38,7 @@ public class TriggerLevel1Level2 : MonoBehaviour
         {
             SceneManager.LoadScene(index);
             StartCoroutine(DelayLoadLevel());
-
+            Time.timeScale = 0f;
 
         }
     }

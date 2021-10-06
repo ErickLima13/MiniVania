@@ -5,6 +5,10 @@ using UnityEngine;
 public class Abyss : MonoBehaviour
 {
     Transform player;
+    public Transform spawn;
+
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +27,16 @@ public class Abyss : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             player = collision.transform;
-            player.GetComponent<Character>().life = 0;
+            player.GetComponent<Character>().life--;
+            
+            player.GetChild(0).GetComponent<Animator>().Play("PlayerJump", -1);
+
+            player.position = spawn.position;
+
+
+
         }
     }
+
+    
 }

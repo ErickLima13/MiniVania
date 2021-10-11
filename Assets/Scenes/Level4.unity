@@ -1252,6 +1252,8 @@ MonoBehaviour:
   cam: {fileID: 1056001439}
   player: {fileID: 0}
   heartCounText: {fileID: 190492290}
+  bossBattleMusic: {fileID: 0}
+  youWin: {fileID: 0}
 --- !u!114 &482828691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8475,12 +8477,12 @@ PrefabInstance:
     - target: {fileID: 2508579089031741079, guid: f694c274a3ef5fc448bfdc1c27efec43,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -37.55
+      value: -37.48
       objectReference: {fileID: 0}
     - target: {fileID: 2508579089031741079, guid: f694c274a3ef5fc448bfdc1c27efec43,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -26.81
+      value: -28.44
       objectReference: {fileID: 0}
     - target: {fileID: 2508579089031741079, guid: f694c274a3ef5fc448bfdc1c27efec43,
         type: 3}

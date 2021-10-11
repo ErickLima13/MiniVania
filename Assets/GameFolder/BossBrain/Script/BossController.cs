@@ -4,19 +4,25 @@ using UnityEngine;
 
 public class BossController : MonoBehaviour
 {
+    AudioSource audios;
 
     public Transform[] point;
     public float speed;
     public Transform laser;
     public float laserTime;
+    public AudioClip clip;
+    public AudioClip clipLaser;
+
 
     Vector3 targetPosition;
 
     // Start is called before the first frame update
     void Start()
     {
+
+        audios = GetComponent<AudioSource>();
         targetPosition = point[0].position;
-        
+        BossLaugh();
     }
 
     // Update is called once per frame
@@ -59,9 +65,14 @@ public class BossController : MonoBehaviour
             laser.GetChild(0).GetComponent<TrailRenderer>().Clear();
             laser.position = transform.position;
             laser.gameObject.SetActive(true);
+            audios.PlayOneShot(clipLaser,0.5f);
 
         }
+    }
 
-
+    private void BossLaugh()
+    {
+        Invoke("BossLaugh", 15);
+        audios.PlayOneShot(clip,0.5f);
     }
 }

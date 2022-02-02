@@ -40,10 +40,13 @@ SpriteAtlas:
       allowAlphaSplitting: 0
       enableRotation: 1
       enableTightPacking: 1
+    secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
     - {fileID: 2800000, guid: 4cdf9ad130582e348a76999c7776929c, type: 3}
     bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: -3171852898790939208, guid: 4cdf9ad130582e348a76999c7776929c, type: 3}
@@ -165,5 +168,6 @@ SpriteAtlas:
   - Dungeon1_6
   - Dungeon1_9
   - Dungeon1_8
+  m_RenderDataMap: {}
   m_Tag: Level
   m_IsVariant: 0

@@ -1,0 +1,20 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Pole : MonoBehaviour
+{
+    public Transform spike;
+
+    public AudioClip clip;
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.name.Equals("AttackCollider"))
+        {
+            spike.GetComponent<Animator>().Play("Spike", -1);
+            GetComponent<Animator>().Play("Pole", -1);
+            GetComponent<AudioSource>().PlayOneShot(clip);
+        }
+    }
+}

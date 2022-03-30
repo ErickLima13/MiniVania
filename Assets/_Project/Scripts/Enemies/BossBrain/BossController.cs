@@ -18,6 +18,8 @@ public class BossController : MonoBehaviour
 
     private AudioSource audios;
 
+    
+
     private void Initialization()
     {
         audios = GetComponent<AudioSource>();
@@ -68,13 +70,13 @@ public class BossController : MonoBehaviour
             laser.GetChild(0).GetComponent<TrailRenderer>().Clear();
             laser.position = transform.position;
             laser.gameObject.SetActive(true);
-            audios.PlayOneShot(clipLaser,0.5f);
+            audios.PlayOneShot(clipLaser);
         }
     }
 
     private void BossLaugh()
     {
-        Invoke("BossLaugh", 15);
-        audios.PlayOneShot(clip,0.5f);
+        Invoke(nameof(BossLaugh), 15);
+        audios.PlayOneShot(clip);
     }
 }

@@ -79,12 +79,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   a: {fileID: 6142107365693106786}
   b: {fileID: 6142107364394429376}
+  skin: {fileID: 6142107365430994542}
+  keeperRange: {fileID: 6142107364360163452}
   audioSource: {fileID: 625830007228196501}
   clips:
   - {fileID: 8300000, guid: c1230cad46dc6794baa1527e9ddc653b, type: 3}
   - {fileID: 8300000, guid: 0384a095fd714b547931b19873e73b99, type: 3}
-  skin: {fileID: 6142107365430994542}
-  keeperRange: {fileID: 6142107364360163452}
   speed: 2.2
   goRight: 1
 --- !u!70 &6142107365337468798
@@ -120,6 +120,8 @@ MonoBehaviour:
   cam: {fileID: 0}
   player: {fileID: 0}
   heartCounText: {fileID: 0}
+  bossBattleMusic: {fileID: 0}
+  youWin: {fileID: 0}
 --- !u!82 &625830007228196501
 AudioSource:
   m_ObjectHideFlags: 0
@@ -129,7 +131,8 @@ AudioSource:
   m_GameObject: {fileID: 6142107365337468784}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 3785285515591606342, guid: 0ff0b7981e3b39d4f9655634ad0f5430,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -267,6 +270,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

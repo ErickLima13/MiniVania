@@ -21,6 +21,6 @@ public class KeeperEvent : MonoBehaviour
 
     public void keeperAttackSound()
     {
-        audioSource.PlayOneShot(attackSound, 0.5f);
+        audioSource.PlayOneShot(attackSound);
     }
 }

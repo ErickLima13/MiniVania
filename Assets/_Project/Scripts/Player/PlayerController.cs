@@ -6,41 +6,54 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private Vector2 vel;
 
-    private float comboTime;
-    private float dashTime;
+    private Vector2 vel;
 
     private bool isGrounded;
 
     private string currentLevel;
 
-    public int comboNum;
+    private float comboTime;
+    private float dashTime;
+    [SerializeField] private float jumpForce;
+    [SerializeField] private float dashForce;
+    [SerializeField] private float speed;
+    [SerializeField] private float distance;
 
-    public float jumpForce;
-    public float dashForce;
-    public float speed;
-    public float distance;
+    [SerializeField] private Transform skin;
+    [SerializeField] private Transform gameOverScreen;
+
+    [SerializeField] private LayerMask tileMapFront;
+
+    public int comboNum;
 
     public AudioSource audioSource;
 
     public AudioClip[] clips;
 
-    public Transform skin;
-    public Transform gameOverScreen;
+    public static PlayerController Instance { get; private set; }
 
-    public LayerMask tileMapFront;
 
     private void Initialization()
     {
         audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
         currentLevel = SceneManager.GetActiveScene().name;
+
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+
         DontDestroyOnLoad(gameObject);
     }
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Initialization();
     }
@@ -87,7 +100,7 @@ public class PlayerController : MonoBehaviour
         {
             if (isGrounded)
             {
-                audioSource.PlayOneShot(clips[2], 0.5f);
+                audioSource.PlayOneShot(clips[2]);
                 skin.GetComponent<Animator>().Play("PlayerJump", -1);
                 rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             }
@@ -117,12 +130,12 @@ public class PlayerController : MonoBehaviour
 
             if(comboNum == 1)
             {
-                audioSource.PlayOneShot(clips[0], 0.5f);
+                audioSource.PlayOneShot(clips[0]);
             }
 
             if (comboNum == 2)
             {
-                audioSource.PlayOneShot(clips[1], 0.5f);
+                audioSource.PlayOneShot(clips[1]);
             }
         }
 
@@ -138,7 +151,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Fire2") && dashTime > 1)
         {
-            audioSource.PlayOneShot(clips[4],0.5f);
+            audioSource.PlayOneShot(clips[4]);
             dashTime = 0;
             skin.GetComponent<Animator>().Play("PlayerDash", -1);
             rb.velocity = Vector2.zero;
@@ -161,4 +174,6 @@ public class PlayerController : MonoBehaviour
     {
         rb.gravityScale = 6;
     }
+
+    
 }

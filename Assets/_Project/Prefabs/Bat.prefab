@@ -105,6 +105,8 @@ MonoBehaviour:
   cam: {fileID: 0}
   player: {fileID: 0}
   heartCounText: {fileID: 0}
+  bossBattleMusic: {fileID: 0}
+  youWin: {fileID: 0}
 --- !u!82 &6037995170821716057
 AudioSource:
   m_ObjectHideFlags: 0
@@ -114,7 +116,8 @@ AudioSource:
   m_GameObject: {fileID: 3228828153919353596}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 3785285515591606342, guid: 0ff0b7981e3b39d4f9655634ad0f5430,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: bb5b66fae0612b74a8070afb8624a990, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -248,6 +251,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

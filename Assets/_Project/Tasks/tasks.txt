@@ -1,0 +1,3 @@
+- Melhorar o script da lamina do boss. (Script Blade) - Feito.
+- Ajustar o som do jogo com audio mixer - Feito
+- Criar menu de opçoes. - Feito.

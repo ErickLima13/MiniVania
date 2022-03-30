@@ -50,7 +50,7 @@ public class Character : MonoBehaviour
         life -= value;
         skin.GetComponent<Animator>().Play("PlayerDamage", 1);
         cam.GetComponent<Animator>().Play("ShakeCamera", -1);
-        GetComponent<PlayerController>().audioSource.PlayOneShot(GetComponent<PlayerController>().clips[3], 0.4f);
+        GetComponent<PlayerController>().audioSource.PlayOneShot(GetComponent<PlayerController>().clips[3]);
     }
 
     public void BossBrain()
@@ -97,7 +97,6 @@ public class Character : MonoBehaviour
 
                     if (cam.GetComponent<AudioSource>().clip != null)
                     {
-
                         cam.GetComponent<AudioSource>().Stop();
                         cam.GetComponent<AudioSource>().clip = null;
                         cam.GetComponent<AudioSource>().PlayOneShot(youWin);

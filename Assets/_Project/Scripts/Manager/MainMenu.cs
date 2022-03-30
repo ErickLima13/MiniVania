@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] private AudioMixer masterMixer;
+
     public void NewGame()
     {
         SceneManager.LoadScene("Level1");
@@ -19,4 +23,21 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Menu");
     }
+
+    public void SetVolumeBGM(float volume)
+    {
+        masterMixer.SetFloat("BGM", volume);
+    }
+
+    public void SetVolumeSFX(float volume)
+    {
+        masterMixer.SetFloat("SFX", volume);
+    }
+
+    public void SetFullscreen(bool isFullscreen)
+    {
+        Screen.fullScreen = isFullscreen;
+    }
+
+    
 }

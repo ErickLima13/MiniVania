@@ -25,7 +25,7 @@ public class AddHeart : MonoBehaviour
         {
             audios.PlayOneShot(clip);
             collision.GetComponent<Character>().life++;
-            Destroy(gameObject,0.1f);
+            Destroy(gameObject,0.2f);
         }
     }
 }

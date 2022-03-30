@@ -10,9 +10,11 @@ public class Blade : MonoBehaviour
 
     public Vector3 targetPosition;
 
+    public int index;
+
     private void Initialization()
     {
-        targetPosition = point[0].position;
+        targetPosition = point[index].position;
     }
 
     // Start is called before the first frame update
@@ -29,29 +31,27 @@ public class Blade : MonoBehaviour
 
     private void Movement()
     {
-        if (transform.position == (point[0].position))
-        {
-            targetPosition = point[1].position;
-        }
+        //if (transform.position == targetPosition)
+        //{
+        //    index++;
+        //    if (index >= point.Length)
+        //    {
+        //        index = 0;
+        //    }
+        //    targetPosition = point[index].position;
+        //}
 
-        if (transform.position == (point[1].position))
+        for(int i = 0; i < point.Length; i++)
         {
-            targetPosition = point[2].position;
-        }
-
-        if (transform.position == (point[2].position))
-        {
-            targetPosition = point[3].position;
-        }
-
-        if (transform.position == (point[3].position))
-        {
-            targetPosition = point[0].position;
+            if (transform.position == point[i].position)
+            {
+                index = (i + 1) % point.Length;
+                targetPosition = point[index].position;
+            }
         }
 
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
-
-        transform.Rotate(0, 0, -2000 * Time.deltaTime);
+        transform.Rotate(0, 0, -300 * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -57,7 +57,7 @@ public class KeeperController : MonoBehaviour
     {
         if (GetComponent<Character>().life <= 0)
         {
-            audioSource.PlayOneShot(clips[0], 0.5f);
+            audioSource.PlayOneShot(clips[0]);
             keeperRange.GetComponent<CircleCollider2D>().enabled = false;
             GetComponent<CapsuleCollider2D>().enabled = false;
             this.enabled = false;
@@ -68,6 +68,4 @@ public class KeeperController : MonoBehaviour
     {
         skin.GetComponent<Animator>().Play("KeeperHit");
     }
-
-   
 }
